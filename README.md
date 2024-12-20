@@ -1,25 +1,44 @@
-## UAVDB: Trajectory-Guided Adaptable Bounding Boxes for UAV Detection
+# UAVDB: Trajectory-Guided Adaptable Bounding Boxes for UAV Detection
 
 
-This repository presents the Patch Intensity Convergence (PIC) technique, a trajectory-guided approach for generating high-fidelity UAV detection bounding boxes without manual labeling.
+This repository introduces the Patch Intensity Convergence (PIC) technique, a trajectory-guided method for generating high-fidelity UAV detection bounding boxes without manual labeling. It also serves as the foundation for [UAVDB](https://zenodo.org/records/14534940), a dedicated database for UAV detection. More details are presented in the [paper](https://arxiv.org/abs/2409.06490).
 
 
-<img src="https://github.com/wish44165/UAVDB/blob/main/assets/overview.png" alt="overview" width="70%">
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/overview.png" alt="overview" width="97%">
+
+
+## 1. Environment Setup
+
+
+<details><summary>Hardware Information</summary>
+
+### Laptop
+
+- CPU: Intel® Core™ i7-12650H
+- GPU: NVIDIA GeForce RTX 4050 Laptop GPU (6GB)
+- RAM: 23734MiB
+
+### HPC
+
+- GPU: Spartan gpu-a100 (80GB)
+  
+</details>
 
 
 <details><summary>Folder Structure</summary>
 
 ```
 UAVDB/
-├── PIC.py
+├── assets/
+├── logfile/
+├── src/PIC.py
 ├── data/
-    ├── videos/d1c0.txt, d1c1.txt, ...
-    └── detections/d1c0.mp4, d1c1.mp4, ...
+│   ├── videos/d1c0.txt, d1c1.txt, ...
+│   └── detections/d1c0.mp4, d1c1.mp4, ...
 ├── datasets/
-    └── RGB/
-        ├── train/d1c0_0.jpg, d1c0_0.txt, ...
-        ├── val/d1c1_0.jpg, d1c1_0.txt, ...
-        └── test/d1c3_0.jpg, d1c3_0.txt, ...
+│   ├── train/d1c0_0.jpg, d1c0_0.txt, ...
+│   ├── val/d1c1_0.jpg, d1c1_0.txt, ...
+│   └── test/d1c3_0.jpg, d1c3_0.txt, ...
 └── weights/
     ├── yolov8n.pt
     ├── yolov8s.pt
@@ -31,26 +50,6 @@ UAVDB/
     └── yolo11s.pt
 ```
 
-</details>
-
-
-
-
-## 1. Environment Setup
-
-
-<details><summary>Hardware Information</summary>
-
-### Laptop
-
-- CPU: Intel® Core™ i7-12650H
-- GPU: NVIDIA GeForce RTX 4050 Laptop GPU (6G)
-- RAM: 23734MiB
-
-### HPC
-
-- GPU: Spartan gpu-a100 (80GB)
-  
 </details>
 
 
@@ -140,7 +139,7 @@ Summary of dataset characteristics in [Multi-view drone tracking datasets](https
 
 <details><summary>UAVDB</summary>
 
-Overview of UAVDB constructed using the PIC approach, showing the distribution of 10,763 training, 2,720 validation, and 4,578 test images across datasets and camera configurations.
+Overview of UAVDB constructed using the PIC approach, showing the distribution of 10,763 training, 2,720 validation, and 4,578 test images (18,061 total) across datasets and camera configurations.
 
 | Camera $$\backslash$$ Dataset | 1           | 2           | 3            | 4            | 5           |
 | ----------------------------- | ----------- | ----------- | ------------ | ------------ | ----------- |
@@ -162,23 +161,21 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 
 <details><summary>Patch Intensity Convergence (PIC)</summary>
 
-Details soon.
-
-<img src="https://github.com/wish44165/UAVDB/blob/main/assets/PIC.png" alt="PIC" width="70%">
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/PIC.png" alt="PIC" width="97%">
 
 </details>
 
 
 <details><summary>Validation Performance</summary>
 
-<img src="https://github.com/wish44165/UAVDB/blob/main/assets/valid_performance.jpg" alt="Valid" width="70%">
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/valid_performance.jpg" alt="Valid" width="97%">
 
 </details>
 
 
 <details><summary>Inference Results</summary>
 
-<img src="https://github.com/wish44165/UAVDB/blob/main/assets/inference.png" alt="Inference" width="70%">
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/inference.png" alt="Inference" width="97%">
 
 </details>
 
@@ -190,29 +187,22 @@ Details soon.
 
 | Model                                                                           | image size | batch size | $$AP^{val}_{50}$$ | $$AP^{val}_{50-95}$$ | $$AP^{test}_{50}$$ | $$AP^{test}_{50-95}$$ |
 | ------------------------------------------------------------------------------- | ---------- | ---------- | ----------------- | -------------------- | ------------------ | --------------------- |
-| [yolov8n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov8n.pt)   | 640        | 64         | 0.829             | 0.522                | 0.789              | 0.450                 |
-| [yolov8s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov8s.pt)   | 640        | 64         | 0.814             | 0.545                | 0.796              | 0.450                 |
-| [yolov9t.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov9t.pt)   | 640        | 64         | 0.839             | 0.501                | 0.848              | 0.508                 |
-| [yolov9s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov9s.pt)   | 640        | 64         | 0.819             | 0.517                | 0.834              | 0.484                 |
-| [yolo10n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10n.pt)  | 640        | 64         | 0.764             | 0.492                | 0.731              | 0.417                 |
-| [yolo10s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10s.pt)  | 640        | 64         | 0.817             | 0.530                | 0.823              | 0.516                 |
-| [yolo11n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11n.pt)   | 640        | 64         | 0.847             | 0.527                | 0.856              | 0.539                 |
-| [yolo11s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11s.pt)   | 640        | 64         | 0.826             | 0.553                | 0.885              | 0.578                 |
-
-
-
-
-## 5. Acknowledgment
-
-- [Multi-view drone tracking datasets](https://github.com/CenekAlbl/drone-tracking-datasets)
-- [Official YOLOv8 & YOLO11](https://github.com/ultralytics/ultralytics)
-- [Official YOLOv9](https://github.com/WongKinYiu/yolov9)
-- [Official YOLO10](https://github.com/THU-MIG/yolov10)
+| [yolov8n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov8n.pt)   | 640        | 32         | 0.829             | 0.522                | 0.789              | 0.450                 |
+| [yolov8s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov8s.pt)   | 640        | 32         | 0.814             | 0.545                | 0.796              | 0.450                 |
+| [yolov9t.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov9t.pt)   | 640        | 32         | 0.839             | 0.501                | 0.848              | 0.508                 |
+| [yolov9s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov9s.pt)   | 640        | 32         | 0.819             | 0.517                | 0.834              | 0.484                 |
+| [yolo10n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10n.pt)  | 640        | 32         | 0.764             | 0.492                | 0.731              | 0.417                 |
+| [yolo10s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10s.pt)  | 640        | 32         | 0.817             | 0.530                | 0.823              | 0.516                 |
+| [yolo11n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11n.pt)   | 640        | 32         | 0.847             | 0.527                | 0.856              | 0.539                 |
+| [yolo11s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11s.pt)   | 640        | 32         | 0.826             | 0.553                | 0.885              | 0.578                 |
 
 
 
 
 ## Citation
+
+If you find this project helpful for your research or applications, we would appreciate it if you could give it a star and cite the paper.
+
 ```
 @article{chen2024uavdb,
   title={UAVDB: Trajectory-Guided Adaptable Bounding Boxes for UAV Detection},
@@ -221,3 +211,10 @@ Details soon.
   year={2024}
 }
 ```
+
+
+
+
+## Acknowledgment
+
+The data and evaluation codes based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), [YOLOv8, YOLO11](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), and [YOLO10](https://github.com/THU-MIG/yolov10), and greatly appreciate their excellent works.
