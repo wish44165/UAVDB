@@ -47,7 +47,9 @@ UAVDB/
     ├── yolo10n.pt
     ├── yolo10s.pt
     ├── yolo11n.pt
-    └── yolo11s.pt
+    ├── yolo11s.pt
+    ├── yolov12n.pt
+    └── yolov12s.pt
 ```
 
 </details>
@@ -110,6 +112,24 @@ $ wget https://github.com/THU-MIG/yolov10/releases/download/v1.1/yolov10m.pt
 $ wget https://github.com/THU-MIG/yolov10/releases/download/v1.1/yolov10b.pt
 $ wget https://github.com/THU-MIG/yolov10/releases/download/v1.1/yolov10l.pt
 $ wget https://github.com/THU-MIG/yolov10/releases/download/v1.1/yolov10x.pt
+
+
+# YOLOv12
+# setup
+$ conda create -n yolov12 python=3.11 -y
+$ conda activate yolov12
+$ git clone https://github.com/sunsmarterjie/yolov12.git
+$ cd yolov12/
+$ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu11torch2.2cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
+$ pip install -r requirements.txt
+$ pip install -e .
+
+# download pretrained weights
+$ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12n.pt
+$ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12s.pt
+$ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12m.pt
+$ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12l.pt
+$ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12x.pt
 ```
 
 </details>
@@ -141,15 +161,15 @@ Summary of dataset characteristics in [Multi-view drone tracking datasets](https
 
 Overview of UAVDB constructed using the PIC approach, showing the distribution of 10,763 training, 2,720 validation, and 4,578 test images (18,061 total) across datasets and camera configurations.
 
-| Camera $$\backslash$$ Dataset | 1           | 2           | 3            | 4            | 5           |
-| ----------------------------- | ----------- | ----------- | ------------ | ------------ | ----------- |
-| 0                             | train / 291 | test / 237  | train / 3190 | train / 2355 | --          |
-| 1                             | valid / 303 | train / 343 | train / 841  | test / 416   | --          |
-| 2                             | train / 394 | train / 809 | valid / 1067 | train / 701  | --          |
-| 3                             | test / 348  | valid / 426 | train / 638  | train / 727  | --          |
-| 4                             | --          | --          | test / 1253  | valid / 924  | --          |
-| 5                             | --          | --          | train / 1303 | train / 1110 | --          |
-| 6                             | --          | --          | --           | test / 385   | --          |
+| Camera $$\backslash$$ Dataset | 1           | 2           | 3            | 4            |
+| ----------------------------- | ----------- | ----------- | ------------ | ------------ |
+| 0                             | train / 291 | test  / 237 | train / 3190 | train / 2355 |
+| 1                             | valid / 303 | train / 343 | train / 841  | test  / 416  |
+| 2                             | train / 394 | train / 809 | valid / 1067 | train / 701  |
+| 3                             | test  / 348 | valid / 426 | train / 638  | train / 727  |
+| 4                             | --          | --          | test  / 1253 | valid / 924  |
+| 5                             | --          | --          | train / 1303 | train / 1110 |
+| 6                             | --          | --          | --           | test  / 385  |
 
 </details>
 
@@ -195,6 +215,8 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 | [yolo10s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10s.pt)  | 640        | 32         | 0.817             | 0.530                | 0.823              | 0.516                 |
 | [yolo11n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11n.pt)   | 640        | 32         | 0.847             | 0.527                | 0.856              | 0.539                 |
 | [yolo11s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11s.pt)   | 640        | 32         | 0.826             | 0.553                | 0.885              | 0.578                 |
+| [yolov12n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12n.pt) | 640        | 32         | 0.857             | 0.544                | 0.848              | 0.531                 |
+| [yolov12s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12s.pt) | 640        | 32         | 0.869             | 0.566                | 0.882              | 0.565                 |
 
 
 
@@ -217,4 +239,4 @@ If you find this project helpful for your research or applications, we would app
 
 ## Acknowledgment
 
-The data and evaluation codes based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), [YOLOv8, YOLO11](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), and [YOLO10](https://github.com/THU-MIG/yolov10), and greatly appreciate their excellent works.
+The data and evaluation codes based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), [YOLOv8, YOLO11](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLO10](https://github.com/THU-MIG/yolov10), and [YOLOv12](https://github.com/sunsmarterjie/yolov12) and greatly appreciate their excellent works.
