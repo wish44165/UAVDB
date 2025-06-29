@@ -1,4 +1,14 @@
-# UAVDB: Trajectory-Guided Adaptable Bounding Boxes for UAV Detection
+## UAVDB
+
+
+> [UAVDB: Trajectory-Guided Adaptable Bounding Boxes for UAV Detection](https://arxiv.org/abs/2409.06490)
+>
+> Yu-Hsi Chen
+
+
+[![arXiv](https://img.shields.io/badge/arXiv-2409.06490-b31b1b.svg)](https://arxiv.org/abs/2409.06490)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14534940.svg)](https://doi.org/10.5281/zenodo.14534940)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15549514.svg)](https://doi.org/10.5281/zenodo.15549514)
 
 
 This repository introduces the Patch Intensity Convergence (PIC) technique, a trajectory-guided method for generating high-fidelity UAV detection bounding boxes without manual labeling. It also serves as the foundation for [UAVDB](https://zenodo.org/records/14534940), a dedicated database for UAV detection. More details are presented in the [paper](https://arxiv.org/abs/2409.06490).
@@ -21,7 +31,7 @@ This repository introduces the Patch Intensity Convergence (PIC) technique, a tr
 ### HPC
 
 - GPU: Spartan gpu-a100 (80GB)
-  
+
 </details>
 
 
@@ -49,7 +59,9 @@ UAVDB/
     ├── yolo11n.pt
     ├── yolo11s.pt
     ├── yolov12n.pt
-    └── yolov12s.pt
+    ├── yolov12s.pt
+    ├── yolov13n.pt
+    └── yolov13s.pt
 ```
 
 </details>
@@ -130,6 +142,23 @@ $ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12s.
 $ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12m.pt
 $ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12l.pt
 $ wget https://github.com/sunsmarterjie/yolov12/releases/download/v1.0/yolov12x.pt
+
+
+# YOLOv13
+# setup
+$ conda create -n yolov13 python=3.11 -y
+$ conda activate yolov13
+$ git clone https://github.com/iMoonLab/yolov13.git
+$ cd yolov13/
+$ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu11torch2.2cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
+$ pip install -r requirements.txt
+$ pip install -e .
+
+# download pretrained weights
+$ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13n.pt
+$ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13s.pt
+$ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13l.pt
+$ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13x.pt
 ```
 
 </details>
@@ -217,6 +246,8 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 | [yolo11s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11s.pt)   | 640        | 32         | 0.826             | 0.553                | 0.885              | 0.578                 |
 | [yolov12n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12n.pt) | 640        | 32         | 0.857             | 0.544                | 0.848              | 0.531                 |
 | [yolov12s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12s.pt) | 640        | 32         | 0.869             | 0.566                | 0.882              | 0.565                 |
+| [yolov13n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13n.pt) | 640        | 32         | 0.833             | 0.541                | 0.795              | 0.505                 |
+| [yolov13s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13s.pt) | 640        | 32         | 0.852             | 0.555                | 0.804              | 0.496                 |
 
 
 
@@ -239,4 +270,4 @@ If you find this project helpful for your research or applications, we would app
 
 ## Acknowledgment
 
-The data and evaluation codes based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), [YOLOv8, YOLO11](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLO10](https://github.com/THU-MIG/yolov10), and [YOLOv12](https://github.com/sunsmarterjie/yolov12) and greatly appreciate their excellent works.
+The data and evaluation codes are based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), as well as the official implementations of [YOLOv8, YOLO11](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLO10](https://github.com/THU-MIG/yolov10), [YOLOv12](https://github.com/sunsmarterjie/yolov12), and [YOLOv13](https://github.com/iMoonLab/yolov13). We greatly appreciate their excellent contributions.

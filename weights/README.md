@@ -12,3 +12,5 @@
 | [yolo11s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11s.pt)   | 640        | 32         | 0.826             | 0.553                | 0.885              | 0.578                 |
 | [yolov12n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12n.pt) | 640        | 32         | 0.857             | 0.544                | 0.848              | 0.531                 |
 | [yolov12s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12s.pt) | 640        | 32         | 0.869             | 0.566                | 0.882              | 0.565                 |
+| [yolov13n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12n.pt) | 640        | 32         | 0.833             | 0.541                | 0.795              | 0.505                 |
+| [yolov13s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12s.pt) | 640        | 32         | 0.852             | 0.555                | 0.804              | 0.496                 |
