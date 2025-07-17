@@ -15,7 +15,7 @@
 This repository introduces [UAVDB](https://doi.org/10.5281/zenodo.16017313), a benchmark for UAV detection and segmentation. Built on the [multi-view drone tracking dataset](https://github.com/CenekAlbl/drone-tracking-datasets), it first transforms trajectory points into precise bounding boxes using the proposed Patch Intensity Convergence (PIC) method, then applies [SAM2](https://github.com/facebookresearch/sam2) to generate high-quality instance masks across video frames. More details can be found in the [paper](https://arxiv.org/abs/2409.06490).
 
 
-<img src="https://github.com/wish44165/UAVDB/blob/main/assets/masks.png" alt="masks" width="100%">
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/masks.PNG" alt="masks" width="100%">
 
 
 ## 1. Environment Setup
@@ -240,6 +240,8 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 <details><summary>Inference Results</summary>
 
 <img src="https://github.com/wish44165/UAVDB/blob/main/assets/inference.png" alt="Inference" width="97%">
+
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/tracking.PNG" alt="Inference" width="97%">
 
 </details>
 
