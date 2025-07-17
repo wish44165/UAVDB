@@ -1,20 +1,21 @@
 ## UAVDB
 
 
-> [UAVDB: Trajectory-Guided Adaptable Bounding Boxes for UAV Detection](https://arxiv.org/abs/2409.06490)
+> [UAVDB: Point-Guided Masks for UAV Detection and Segmentation](https://arxiv.org/abs/2409.06490)
 >
 > Yu-Hsi Chen
 
 
 [![arXiv](https://img.shields.io/badge/arXiv-2409.06490-b31b1b.svg)](https://arxiv.org/abs/2409.06490)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14534940.svg)](https://doi.org/10.5281/zenodo.14534940)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16017313.svg)](https://doi.org/10.5281/zenodo.16017313)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15549514.svg)](https://doi.org/10.5281/zenodo.15549514)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14534940.svg)](https://doi.org/10.5281/zenodo.14534940)
 
 
-This repository introduces the Patch Intensity Convergence (PIC) technique, a trajectory-guided method for generating high-fidelity UAV detection bounding boxes without manual labeling. It also serves as the foundation for [UAVDB](https://zenodo.org/records/14534940), a dedicated database for UAV detection. More details are presented in the [paper](https://arxiv.org/abs/2409.06490).
+This repository introduces [UAVDB](https://doi.org/10.5281/zenodo.16017313), a benchmark for UAV detection and segmentation. Built on the [multi-view drone tracking dataset](https://github.com/CenekAlbl/drone-tracking-datasets), it first transforms trajectory points into precise bounding boxes using the proposed Patch Intensity Convergence (PIC) method, then applies [SAM2](https://github.com/facebookresearch/sam2) to generate high-quality instance masks across video frames. More details can be found in the [paper](https://arxiv.org/abs/2409.06490).
 
 
-<img src="https://github.com/wish44165/UAVDB/blob/main/assets/overview.png" alt="overview" width="97%">
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/masks.png" alt="masks" width="100%">
 
 
 ## 1. Environment Setup
@@ -24,11 +25,15 @@ This repository introduces the Patch Intensity Convergence (PIC) technique, a tr
 
 ### Laptop
 
+<a href="https://github.com/wish44165/wish44165/tree/main/assets"><img src="https://github.com/wish44165/wish44165/blob/main/assets/msi_Cyborg_15_A12VE_badge.svg" alt="Spartan"></a> 
+
 - CPU: Intel® Core™ i7-12650H
 - GPU: NVIDIA GeForce RTX 4050 Laptop GPU (6GB)
 - RAM: 23734MiB
 
 ### HPC
+
+<a href="https://dashboard.hpc.unimelb.edu.au/"><img src="https://github.com/wish44165/wish44165/blob/main/assets/unimelb_spartan.svg" alt="Spartan"></a> 
 
 - GPU: Spartan gpu-a100 (80GB)
 
@@ -159,6 +164,16 @@ $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13n.pt
 $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13s.pt
 $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13l.pt
 $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13x.pt
+
+
+# SAM
+$ git clone https://github.com/facebookresearch/segment-anything
+$ wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
+
+
+# SAM2
+$ git clone https://github.com/facebookresearch/sam2.git
+$ wget https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_large.pt
 ```
 
 </details>
@@ -270,4 +285,4 @@ If you find this project helpful for your research or applications, we would app
 
 ## Acknowledgment
 
-The data and evaluation codes are based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), as well as the official implementations of [YOLOv8, YOLO11](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLO10](https://github.com/THU-MIG/yolov10), [YOLOv12](https://github.com/sunsmarterjie/yolov12), and [YOLOv13](https://github.com/iMoonLab/yolov13). We greatly appreciate their excellent contributions.
+The data and evaluation codes are based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), as well as the official implementations of [YOLOv8, YOLO11](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLO10](https://github.com/THU-MIG/yolov10), [YOLOv12](https://github.com/sunsmarterjie/yolov12), [YOLOv13](https://github.com/iMoonLab/yolov13), [SAM](https://github.com/facebookresearch/segment-anything), and [SAM2](https://github.com/facebookresearch/sam2). We greatly appreciate their excellent contributions.
