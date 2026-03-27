@@ -59,14 +59,16 @@ UAVDB/
     ├── yolov8s.pt
     ├── yolov9t.pt
     ├── yolov9s.pt
-    ├── yolo10n.pt
-    ├── yolo10s.pt
+    ├── yolov10n.pt
+    ├── yolov10s.pt
     ├── yolo11n.pt
     ├── yolo11s.pt
     ├── yolov12n.pt
     ├── yolov12s.pt
     ├── yolov13n.pt
-    └── yolov13s.pt
+    ├── yolov13s.pt
+    ├── yolo26n.pt
+    └── yolo26s.pt
 ```
 
 </details>
@@ -164,6 +166,22 @@ $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13n.pt
 $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13s.pt
 $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13l.pt
 $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13x.pt
+
+
+# YOLO26
+# setup
+$ conda create -n yolo26 python=3.10 -y
+$ conda activate yolo26
+$ git clone https://github.com/ultralytics/ultralytics.git
+$ cd ultralytics/
+$ pip install .
+
+# download pretrained weights
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26n.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26m.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26l.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26x.pt
 
 
 # SAM
@@ -265,6 +283,8 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 | [yolov12s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12s.pt) | 640        | 32         | 0.869             | 0.566                | 0.882              | 0.565                 |
 | [yolov13n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13n.pt) | 640        | 32         | 0.833             | 0.541                | 0.795              | 0.505                 |
 | [yolov13s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13s.pt) | 640        | 32         | 0.852             | 0.555                | 0.804              | 0.496                 |
+| [yolo26n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26n.pt)   | 640        | 32         | 0.845             | 0.564                | 0.845              | 0.566                 |
+| [yolo26s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26s.pt)   | 640        | 32         | 0.865             | 0.555                | 0.863              | 0.555                 |
 
 
 
@@ -275,7 +295,7 @@ If you find this project helpful for your research or applications, we would app
 
 ```
 @article{chen2024uavdb,
-  title={UAVDB: Trajectory-Guided Adaptable Bounding Boxes for UAV Detection},
+  title={UAVDB: Point-Guided Masks for UAV Detection and Segmentation},
   author={Chen, Yu-Hsi},
   journal={arXiv preprint arXiv:2409.06490},
   year={2024}
@@ -287,4 +307,4 @@ If you find this project helpful for your research or applications, we would app
 
 ## Acknowledgment
 
-The data and evaluation codes are based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), as well as the official implementations of [YOLOv8, YOLO11](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLO10](https://github.com/THU-MIG/yolov10), [YOLOv12](https://github.com/sunsmarterjie/yolov12), [YOLOv13](https://github.com/iMoonLab/yolov13), [SAM](https://github.com/facebookresearch/segment-anything), and [SAM2](https://github.com/facebookresearch/sam2). We greatly appreciate their excellent contributions.
+The data and evaluation codes are based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), as well as the official implementations of [YOLOv8, YOLO11, YOLO26](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLOv10](https://github.com/THU-MIG/yolov10), [YOLOv12](https://github.com/sunsmarterjie/yolov12), [YOLOv13](https://github.com/iMoonLab/yolov13), [SAM](https://github.com/facebookresearch/segment-anything), and [SAM2](https://github.com/facebookresearch/sam2). We greatly appreciate their excellent contributions.
