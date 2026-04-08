@@ -285,6 +285,7 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 
 ## 4. UAVDB Benchmark Results
 
+
 ### Object Detection
 
 - image size = 640, batch size = 32
@@ -303,12 +304,13 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 | [yolov12s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12s.pt) | 0.869             | 0.566                | 0.882              | 0.565                 |
 | [yolov13n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13n.pt) | 0.833             | 0.541                | 0.795              | 0.505                 |
 | [yolov13s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13s.pt) | 0.852             | 0.555                | 0.804              | 0.496                 |
-| [yolo26n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26n.pt)   | 0.845             | 0.564                | 0.845              | 0.566                 |
-| [yolo26s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26s.pt)   | 0.865             | 0.555                | 0.863              | 0.555                 |
+| [yolo26n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26n.pt)   | 0.845             | 0.564                | 0.799              | 0.528                 |
+| [yolo26s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26s.pt)   | 0.863             | 0.555                | 0.843              | 0.567                 |
+
 
 ### Instance Segmentation
 
-- image size = 1920, batch size = 16
+- image size = 1280, batch size = 16
 
 | Model                                                                                   | Type | $$AP^{val}_{50}$$ | $$AP^{val}_{50-95}$$ | $$AP^{test}_{50}$$ | $$AP^{test}_{50-95}$$ |
 | --------------------------------------------------------------------------------------- | ---- | ----------------- | -------------------- | ------------------ | --------------------- |
