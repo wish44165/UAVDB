@@ -15,7 +15,8 @@
 This repository introduces [UAVDB](https://doi.org/10.5281/zenodo.16017313), a benchmark for UAV detection and segmentation. Built on the [multi-view drone tracking dataset](https://github.com/CenekAlbl/drone-tracking-datasets), it first transforms trajectory points into precise bounding boxes using the proposed Patch Intensity Convergence (PIC) method, then applies [SAM2](https://github.com/facebookresearch/sam2) to generate high-quality instance masks across video frames. More details can be found in the [paper](https://arxiv.org/abs/2409.06490).
 
 
-<img src="https://github.com/wish44165/UAVDB/blob/main/assets/masks.PNG" alt="masks" width="100%">
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/boxes.gif" alt="boxes" width="100%">
+<img src="https://github.com/wish44165/UAVDB/blob/main/assets/masks.gif" alt="masks" width="100%">
 
 
 ## 1. Environment Setup
@@ -84,7 +85,7 @@ $ conda install -c conda-forge cupy
 $ pip install scipy opencv-python opencv-contrib-python matplotlib numba
 
 
-# YOLOv8 & YOLO11
+# YOLOv8 & YOLO11 & YOLO26
 $ conda create -n ultralytics python=3.10 -y
 $ conda activate ultralytics
 $ pip install ultralytics seaborn
@@ -92,11 +93,23 @@ $ git clone https://github.com/ultralytics/ultralytics.git
 $ cd ultralytics/
 
 # download pretrained weights
-$ wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt
-$ wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11s.pt
-$ wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11m.pt
-$ wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11l.pt
-$ wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11x.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8n.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8s.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8m.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8l.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolov8x.pt
+
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo11n.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo11s.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo11m.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo11l.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo11x.pt
+
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26n.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26m.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26l.pt
+$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26x.pt
 
 
 # YOLOv9
@@ -168,30 +181,34 @@ $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13l.pt
 $ wget https://github.com/iMoonLab/yolov13/releases/download/yolov13/yolov13x.pt
 
 
-# YOLO26
-# setup
-$ conda create -n yolo26 python=3.10 -y
-$ conda activate yolo26
-$ git clone https://github.com/ultralytics/ultralytics.git
-$ cd ultralytics/
-$ pip install .
-
-# download pretrained weights
-$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26n.pt
-$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt
-$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26m.pt
-$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26l.pt
-$ wget https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26x.pt
-
-
 # SAM
 $ git clone https://github.com/facebookresearch/segment-anything
+$ cd segment-anything/
+$ pip install -e .
+$ pip install opencv-python pycocotools matplotlib onnxruntime onnx
 $ wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
+$ wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_l_0b3195.pth
+$ wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
 
 
 # SAM2
 $ git clone https://github.com/facebookresearch/sam2.git
+$ cd sam2/
+$ pip install -e .
+$ pip install hydra-core
+$ wget https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_tiny.pt
+$ wget https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_small.pt
+$ wget https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_base_plus.pt
 $ wget https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_large.pt
+
+
+# SAM3
+$ git clone https://github.com/facebookresearch/sam3.git
+$ cd sam3/
+$ pip install torch==2.10.0 torchvision --index-url https://download.pytorch.org/whl/cu128
+$ pip install -e .
+$ pip install pandas scikit-learn
+# https://huggingface.co/facebook/sam3
 ```
 
 </details>
@@ -268,23 +285,37 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 
 ## 4. UAVDB Benchmark Results
 
+### Object Detection
 
-| Model                                                                           | image size | batch size | $$AP^{val}_{50}$$ | $$AP^{val}_{50-95}$$ | $$AP^{test}_{50}$$ | $$AP^{test}_{50-95}$$ |
-| ------------------------------------------------------------------------------- | ---------- | ---------- | ----------------- | -------------------- | ------------------ | --------------------- |
-| [yolov8n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov8n.pt)   | 640        | 32         | 0.829             | 0.522                | 0.789              | 0.450                 |
-| [yolov8s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov8s.pt)   | 640        | 32         | 0.814             | 0.545                | 0.796              | 0.450                 |
-| [yolov9t.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov9t.pt)   | 640        | 32         | 0.839             | 0.501                | 0.848              | 0.508                 |
-| [yolov9s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov9s.pt)   | 640        | 32         | 0.819             | 0.517                | 0.834              | 0.484                 |
-| [yolo10n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10n.pt)  | 640        | 32         | 0.764             | 0.492                | 0.731              | 0.417                 |
-| [yolo10s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10s.pt)  | 640        | 32         | 0.817             | 0.530                | 0.823              | 0.516                 |
-| [yolo11n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11n.pt)   | 640        | 32         | 0.847             | 0.527                | 0.856              | 0.539                 |
-| [yolo11s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11s.pt)   | 640        | 32         | 0.826             | 0.553                | 0.885              | 0.578                 |
-| [yolov12n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12n.pt) | 640        | 32         | 0.857             | 0.544                | 0.848              | 0.531                 |
-| [yolov12s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12s.pt) | 640        | 32         | 0.869             | 0.566                | 0.882              | 0.565                 |
-| [yolov13n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13n.pt) | 640        | 32         | 0.833             | 0.541                | 0.795              | 0.505                 |
-| [yolov13s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13s.pt) | 640        | 32         | 0.852             | 0.555                | 0.804              | 0.496                 |
-| [yolo26n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26n.pt)   | 640        | 32         | 0.845             | 0.564                | 0.845              | 0.566                 |
-| [yolo26s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26s.pt)   | 640        | 32         | 0.865             | 0.555                | 0.863              | 0.555                 |
+- image size = 640, batch size = 32
+
+| Model                                                                           | $$AP^{val}_{50}$$ | $$AP^{val}_{50-95}$$ | $$AP^{test}_{50}$$ | $$AP^{test}_{50-95}$$ |
+| ------------------------------------------------------------------------------- | ----------------- | -------------------- | ------------------ | --------------------- |
+| [yolov8n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov8n.pt)   | 0.829             | 0.522                | 0.789              | 0.450                 |
+| [yolov8s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov8s.pt)   | 0.814             | 0.545                | 0.796              | 0.450                 |
+| [yolov9t.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov9t.pt)   | 0.839             | 0.501                | 0.848              | 0.508                 |
+| [yolov9s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov9s.pt)   | 0.819             | 0.517                | 0.834              | 0.484                 |
+| [yolov10n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10n.pt) | 0.764             | 0.492                | 0.731              | 0.417                 |
+| [yolov10s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov10s.pt) | 0.817             | 0.530                | 0.823              | 0.516                 |
+| [yolo11n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11n.pt)   | 0.847             | 0.527                | 0.856              | 0.539                 |
+| [yolo11s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo11s.pt)   | 0.826             | 0.553                | 0.885              | 0.578                 |
+| [yolov12n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12n.pt) | 0.857             | 0.544                | 0.848              | 0.531                 |
+| [yolov12s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12s.pt) | 0.869             | 0.566                | 0.882              | 0.565                 |
+| [yolov13n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13n.pt) | 0.833             | 0.541                | 0.795              | 0.505                 |
+| [yolov13s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov13s.pt) | 0.852             | 0.555                | 0.804              | 0.496                 |
+| [yolo26n.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26n.pt)   | 0.845             | 0.564                | 0.845              | 0.566                 |
+| [yolo26s.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26s.pt)   | 0.865             | 0.555                | 0.863              | 0.555                 |
+
+### Instance Segmentation
+
+- image size = 1920, batch size = 16
+
+| Model                                                                                   | Type | $$AP^{val}_{50}$$ | $$AP^{val}_{50-95}$$ | $$AP^{test}_{50}$$ | $$AP^{test}_{50-95}$$ |
+| --------------------------------------------------------------------------------------- | ---- | ----------------- | -------------------- | ------------------ | --------------------- |
+| [yolov12n-seg.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolov12n-seg.pt) | Box  | 0.925             | 0.591                | 0.928              | 0.531                 |
+|    |  Mask | 0.860             | 0.396                | 0.569              | 0.209                 |
+| [yolo26n-seg.pt](https://github.com/wish44165/UAVDB/blob/main/weights/yolo26n-seg.pt)   | Box  | 0.922             | 0.626                | 0.911              | 0.525                 |
+|    |  Mask | 0.847             | 0.403                | 0.562              | 0.208                 |
 
 
 
@@ -305,6 +336,6 @@ If you find this project helpful for your research or applications, we would app
 
 
 
-## Acknowledgment
+## Acknowledgements
 
-The data and evaluation codes are based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), as well as the official implementations of [YOLOv8, YOLO11, YOLO26](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLOv10](https://github.com/THU-MIG/yolov10), [YOLOv12](https://github.com/sunsmarterjie/yolov12), [YOLOv13](https://github.com/iMoonLab/yolov13), [SAM](https://github.com/facebookresearch/segment-anything), and [SAM2](https://github.com/facebookresearch/sam2). We greatly appreciate their excellent contributions.
+The data and evaluation codes are based on the [Multi-view Drone Tracking Datasets](https://github.com/CenekAlbl/drone-tracking-datasets), as well as the official implementations of [YOLOv8, YOLO11, YOLO26](https://github.com/ultralytics/ultralytics), [YOLOv9](https://github.com/WongKinYiu/yolov9), [YOLOv10](https://github.com/THU-MIG/yolov10), [YOLOv12](https://github.com/sunsmarterjie/yolov12), [YOLOv13](https://github.com/iMoonLab/yolov13), [SAM](https://github.com/facebookresearch/segment-anything), [SAM2](https://github.com/facebookresearch/sam2), and [SAM3](https://github.com/facebookresearch/sam3). We greatly appreciate their excellent contributions.
