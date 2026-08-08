@@ -1,10 +1,12 @@
 ## UAVDB
 
 
-> [UAVDB: Point-Guided Masks for UAV Detection and Segmentation](https://arxiv.org/abs/2409.06490)
+> [UAVDB: Point-Guided Masks for UAV Detection and Segmentation](https://doi.org/10.1007/978-3-032-31404-8_17)
 >
 > Yu-Hsi Chen
 
+
+<a href="https://link.springer.com/chapter/10.1007/978-3-032-31404-8_17"><img src="https://raw.githubusercontent.com/IAPR-TC22-RRL/ICPR-2026-Reproducible-Research-Label-submissions/main/img/logo-icpr.png" alt="ICPR 2026 Logo" height="40" style="margin-right: 20px;"></a> <a href="https://github.com/IAPR-TC22-RRL/ICPR-2026-Reproducible-Research-Label-submissions/issues/17"><img src="https://raw.githubusercontent.com/IAPR-TC22-RRL/ICPR-2026-Reproducible-Research-Label-submissions/main/img/logo-TC22.png" alt="TC22 Reproducible Research Logo" height="40"></a>
 
 [![arXiv](https://img.shields.io/badge/arXiv-2409.06490-b31b1b.svg)](https://arxiv.org/abs/2409.06490)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16017313.svg)](https://doi.org/10.5281/zenodo.16017313)
@@ -327,11 +329,13 @@ Overview of UAVDB constructed using the PIC approach, showing the distribution o
 If you find this project helpful for your research or applications, we would appreciate it if you could give it a star and cite the paper.
 
 ```
-@article{chen2024uavdb,
-  title={UAVDB: Point-Guided Masks for UAV Detection and Segmentation},
+@inproceedings{chen2026uavdb,
+  title={UAVDB: point-guided masks for UAV detection and segmentation},
   author={Chen, Yu-Hsi},
-  journal={arXiv preprint arXiv:2409.06490},
-  year={2024}
+  booktitle={International Conference on Pattern Recognition},
+  pages={247--260},
+  year={2026},
+  organization={Springer}
 }
 ```
 
