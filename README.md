@@ -4,6 +4,7 @@
 > [UAVDB: Point-Guided Masks for UAV Detection and Segmentation](https://doi.org/10.1007/978-3-032-31404-8_17)
 >
 > Yu-Hsi Chen
+<a href="https://orcid.org/0009-0006-1771-0289"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="12" alt="ORCID"></a>
 
 
 <a href="https://link.springer.com/chapter/10.1007/978-3-032-31404-8_17"><img src="https://raw.githubusercontent.com/IAPR-TC22-RRL/ICPR-2026-Reproducible-Research-Label-submissions/main/img/logo-icpr.png" alt="ICPR 2026 Logo" height="40" style="margin-right: 20px;"></a> <a href="https://github.com/IAPR-TC22-RRL/ICPR-2026-Reproducible-Research-Label-submissions/issues/17"><img src="https://raw.githubusercontent.com/IAPR-TC22-RRL/ICPR-2026-Reproducible-Research-Label-submissions/main/img/logo-TC22.png" alt="TC22 Reproducible Research Logo" height="40"></a>
